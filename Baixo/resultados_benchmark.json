@@ -1,0 +1,36 @@
+{
+  "Corda_Sol_G.mp3": {
+    "desc": "corda Sol (G2)",
+    "floor": 43,
+    "V1": {
+      "n": 44,
+      "curtos": 18,
+      "dur_media": 0.45173366316223457,
+      "suboitava": 15,
+      "n_notas_distintas": 17,
+      "impossiveis": 18,
+      "pct_imp": 40.9,
+      "tempo": 3.2
+    },
+    "V2": {
+      "n": 27,
+      "curtos": 0,
+      "dur_media": 0.726268581506677,
+      "suboitava": 1,
+      "n_notas_distintas": 10,
+      "impossiveis": 4,
+      "pct_imp": 14.8,
+      "tempo": 3.8
+    },
+    "V3": {
+      "n": 23,
+      "curtos": 0,
+      "dur_media": 0.8399566203292911,
+      "suboitava": 1,
+      "n_notas_distintas": 9,
+      "impossiveis": 3,
+      "pct_imp": 13.0,
+      "tempo": 3.9
+    }
+  }
+}
