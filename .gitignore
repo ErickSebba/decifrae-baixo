@@ -1,0 +1,14 @@
+# Ambiente Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Configuração local do Claude Code
+.claude/settings.local.json
+
+# Saídas regeneráveis (as figuras versionadas ficam em docs/figuras/)
+fase1_modular/comparacao_*.png
+
+# Binários que não pertencem ao projeto
+*.exe
