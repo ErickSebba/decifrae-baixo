@@ -120,3 +120,7 @@ Toda a validação com gabarito conhecido é **sintética** (gerada em código n
 
 O `git log` reconstrói a progressão real com as datas de modificação originais dos arquivos
 (maio → julho/2026). Resumo legível em [HISTORICO.md](HISTORICO.md).
+
+## Material exploratório
+
+`material-exploratorio/` guarda a exploração inicial (jun a set/2026), anterior a este repositório: notebooks de detecção de pitch polifônica do baixo (pYIN por corda) e de FFT com librosa, e scripts MATLAB de CQT e FFT.
