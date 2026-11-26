@@ -12,3 +12,7 @@ fase1_modular/comparacao_*.png
 
 # Binários que não pertencem ao projeto
 *.exe
+
+# Músicas de terceiros (direitos autorais): usadas localmente nos testes, não versionadas
+Money_PinkFloyd.mp3
+Como_tudo_Deve_Ser.mp3

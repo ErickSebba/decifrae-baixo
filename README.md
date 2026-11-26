@@ -1,19 +1,30 @@
 # Decifraê — Módulo de Transcrição de Baixo (áudio → tablatura)
 
-Código de pesquisa do módulo de baixo do [decifrae.com.br](https://decifrae.com.br), base do
-**Artigo 1 (cross-talk entre cordas)**. O repositório reúne duas fases de desenvolvimento,
-a documentação técnica e os áudios de teste. **Nenhum código foi alterado na organização**:
-os scripts estão exatamente como foram escritos; só a estrutura de pastas, o `.gitignore`
-e os documentos são novos.
+Transcrição de **baixo elétrico de áudio para tablatura**: detecta as notas com pYIN, separa o
+sinal em bandas por corda, escolhe a posição de cada nota no braço por programação dinâmica
+(menor caminho) e escreve a tablatura. É o código de pesquisa do módulo de baixo do
+[decifrae.com.br](https://decifrae.com.br) e a base de um artigo sobre **vazamento entre cordas**
+(*cross-talk*).
 
-> Para reabrir o trabalho em um chat novo, comece por [ARQUIVOS_PARA_NOVO_CHAT.md](ARQUIVOS_PARA_NOVO_CHAT.md).
+Saída da V3 em `Corda_Sol_G.mp3`, um áudio em que só a corda G é tocada:
+
+```
+G|---------------------12-----------------9--7-----9--7-----9--------------9--------
+D|------10--12--10--9----------14------------------------9---------12--10-----8--5--
+A|--10-----------------------------10--7-----------------------10-------------------
+E|-------------------------12-------------------------------------------------------
+B|----------------------------------------------9-----------------------------------
+```
+
+As notas que aparecem fora da corda G são justamente o vazamento entre cordas que o artigo estuda:
+a mesma nota é detectada em mais de uma banda.
 
 ## Estrutura
 
 ```
-decifra-desgraca/
+Decifra-Baixo/
 ├── README.md                     ← este arquivo
-├── ARQUIVOS_PARA_NOVO_CHAT.md    ← o que subir num chat novo e por quê
+├── ARQUIVOS_PARA_NOVO_CHAT.md    ← lista de arquivos para retomar o trabalho
 ├── HISTORICO.md                  ← linha do tempo arquivo-a-arquivo (= git log)
 ├── PARAMETROS.md                 ← todos os parâmetros do pipeline (espaço de busca)
 ├── docs/
@@ -81,7 +92,7 @@ Detalhes em [fase2_v1v2v3/README.md](fase2_v1v2v3/README.md).
 
 ```bash
 cd fase1_modular
-python pipeline.py                  # pipeline monofônico em Money_PinkFloyd.mp3 e Como_tudo_Deve_Ser.mp3 (caminhos no __main__)
+python pipeline.py                  # pipeline monofônico nos áudios definidos no __main__ (ver abaixo)
 python pipeline_polifonico.py       # mesmo, com o módulo 1b polifônico
 python modulo_teste_1.py            # suites sintéticas monofônicas (3 suites)
 python modulo_teste_2.py            # + suite dos 16 ruídos Lee & Shen
@@ -97,8 +108,7 @@ Os scripts da fase 1 abrem janelas do matplotlib por padrão (`PLOTAR = True` no
 | Arquivo | Onde | Ground truth |
 |---|---|---|
 | `Corda_Sol_G.mp3` | `fase2_v1v2v3/` | Só a corda G tocada. Qualquer nota < G2 (MIDI 43) é erro. **Único áudio com verdade objetiva.** |
-| `Money_PinkFloyd.mp3` | `fase1_modular/` | Trecho do riff de *Money*; sem anotação. O riff de referência sintético está em `RIFF_MONEY_HZ` (`modulo_teste_1.py`). |
-| `Como_tudo_Deve_Ser.mp3` | `fase1_modular/` | Trecho real; sem anotação. |
+| `Money_PinkFloyd.mp3`, `Como_tudo_Deve_Ser.mp3` | não versionados | Trechos de músicas usados nos testes da fase 1. Ficam fora do repositório por direitos autorais; para rodar `pipeline.py`, coloque um áudio seu em `fase1_modular/` e ajuste o caminho no `__main__`. O riff de referência sintético de *Money* continua em `RIFF_MONEY_HZ` (`modulo_teste_1.py`). |
 | `Recording__4_.m4a` | **ausente** | Citado no `.docx` e no README da fase 2 (V2 50 → V3 31 notas). Não estava na pasta ao organizar o repositório. |
 
 Toda a validação com gabarito conhecido é **sintética** (gerada em código nos `modulo_teste_*.py`).
@@ -118,9 +128,20 @@ Toda a validação com gabarito conhecido é **sintética** (gerada em código n
 
 ## Histórico
 
-O `git log` reconstrói a progressão real com as datas de modificação originais dos arquivos
+Os scripts estão exatamente como foram escritos; na organização do repositório só a estrutura de
+pastas, o `.gitignore` e os documentos são novos. O `git log` reconstrói a progressão real com as datas de modificação originais dos arquivos
 (maio → julho/2026). Resumo legível em [HISTORICO.md](HISTORICO.md).
 
 ## Material exploratório
 
 `material-exploratorio/` guarda a exploração inicial (jun a set/2026), anterior a este repositório: notebooks de detecção de pitch polifônica do baixo (pYIN por corda) e de FFT com librosa, e scripts MATLAB de CQT e FFT.
+
+## O que aprendi
+
+- **Processamento de áudio do zero:** pYIN para altura, CQT e FFT para análise espectral,
+  filtros por banda para separar as cordas e Viterbi para suavizar a sequência de notas.
+- **A bancada de testes sintética foi a decisão que mais mudou o resultado.** Com gabarito
+  conhecido e 16 tipos de ruído deu para comparar estratégias de forma objetiva, e foi ela que
+  mostrou que o erro restante não era de oitava, e sim vazamento entre cordas.
+- **Iterar com método:** ajustar cada função até funcionar bem, documentar o resultado de cada
+  versão (V1, V2, V3) e manter testes para cada etapa do pipeline.
