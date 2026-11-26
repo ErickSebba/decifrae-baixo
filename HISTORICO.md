@@ -43,7 +43,7 @@ diagnóstico de que o erro residual é a mesma nota em mais de uma banda.
 | Commit | O que aconteceu |
 |---|---|
 | reorganização | `git init`; reconstrução dos commits acima com datas originais; `git mv` para `fase1_modular/`, `fase2_v1v2v3/`, `docs/`; `.gitignore`. Removidos do disco sem entrar no git: `PerformanceTest_Windows_x86-64.exe` (86 MB, instalador PassMark) e `Baixo/Arquivos/Money_PinkFloyd.mp3` (duplicata idêntica). |
-| documentação | `README.md`, `HISTORICO.md`, `PARAMETROS.md`, `ARQUIVOS_PARA_NOVO_CHAT.md`. |
+| documentação | `README.md`, `HISTORICO.md`, `PARAMETROS.md`. |
 
 ## Mapa de correspondência fase 1 → fase 2
 

@@ -24,7 +24,6 @@ a mesma nota é detectada em mais de uma banda.
 ```
 Decifra-Baixo/
 ├── README.md                     ← este arquivo
-├── ARQUIVOS_PARA_NOVO_CHAT.md    ← lista de arquivos para retomar o trabalho
 ├── HISTORICO.md                  ← linha do tempo arquivo-a-arquivo (= git log)
 ├── PARAMETROS.md                 ← todos os parâmetros do pipeline (espaço de busca)
 ├── docs/
