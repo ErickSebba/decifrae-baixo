@@ -19,3 +19,8 @@ Como_tudo_Deve_Ser.mp3
 
 # Material de estudo e de IA (fica só no disco)
 ARQUIVOS_PARA_NOVO_CHAT.md
+
+# Ferramentas de IA e cache dos testes (ficam só no disco)
+.claude/
+CLAUDE.md
+.pytest_cache/
