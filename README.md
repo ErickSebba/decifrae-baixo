@@ -6,6 +6,10 @@ sinal em bandas por corda, escolhe a posição de cada nota no braço por progra
 [decifrae.com.br](https://decifrae.com.br) e a base de um artigo sobre **vazamento entre cordas**
 (*cross-talk*).
 
+*In English: transcription of electric bass audio into tablature: pYIN pitch detection, per-string
+band separation, Viterbi smoothing and dynamic programming to choose the fretboard position of each
+note. Evaluated on one recording with objective ground truth (only the G string is played).*
+
 Saída da V3 em `Corda_Sol_G.mp3`, um áudio em que só a corda G é tocada:
 
 ```
